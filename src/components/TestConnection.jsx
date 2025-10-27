@@ -1,39 +1,40 @@
 import { useState } from 'react';
-import { testConnection, clienteService, agendamentoService } from '../services/studyApi';
+import { connectionService } from '../services/connectionService';
+import { clienteService } from '../services/studyApi';
 
 function TestConnection() {
   const [result, setResult] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const handleTest = async () => {
+  const handleTestComplete = async () => {
     setLoading(true);
     try {
-      const response = await testConnection();
-      setResult(`✅ Conexão OK: ${response.data.message}`);
+      const status = await connectionService.checkStatus();
+      setResult(`${status.backend && status.database ? '✅' : '❌'} ${status.message}`);
     } catch (error) {
       setResult(`❌ Erro: ${error.message}`);
     }
     setLoading(false);
   };
 
-  const handleTestClientes = async () => {
+  const handleTestBackend = async () => {
     setLoading(true);
     try {
-      const response = await clienteService.getAll();
-      setResult(`✅ Clientes: ${response.data.length} encontrados`);
+      const response = await connectionService.testHealth();
+      setResult(`✅ Backend: ${response.data.message}`);
     } catch (error) {
-      setResult(`❌ Erro clientes: ${error.message}`);
+      setResult(`❌ Backend offline: ${error.message}`);
     }
     setLoading(false);
   };
 
-  const handleTestAgendamentos = async () => {
+  const handleTestDatabase = async () => {
     setLoading(true);
     try {
-      const response = await agendamentoService.getAll();
-      setResult(`✅ Agendamentos: ${response.data.length} encontrados`);
+      const response = await clienteService.getAll();
+      setResult(`✅ Banco de dados: ${response.data.length} clientes encontrados`);
     } catch (error) {
-      setResult(`❌ Erro agendamentos: ${error.message}`);
+      setResult(`❌ Erro no banco: ${error.message}`);
     }
     setLoading(false);
   };
@@ -43,14 +44,14 @@ function TestConnection() {
       <h3>Teste de Conexão Backend</h3>
       
       <div style={{ marginBottom: '10px' }}>
-        <button onClick={handleTest} disabled={loading}>
-          Testar Conexão
+        <button onClick={handleTestComplete} disabled={loading}>
+          Teste Completo
         </button>
-        <button onClick={handleTestClientes} disabled={loading} style={{ marginLeft: '10px' }}>
-          Testar Clientes
+        <button onClick={handleTestBackend} disabled={loading} style={{ marginLeft: '10px' }}>
+          Testar Backend
         </button>
-        <button onClick={handleTestAgendamentos} disabled={loading} style={{ marginLeft: '10px' }}>
-          Testar Agendamentos
+        <button onClick={handleTestDatabase} disabled={loading} style={{ marginLeft: '10px' }}>
+          Testar Banco
         </button>
       </div>
 

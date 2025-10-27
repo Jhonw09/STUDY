@@ -10,7 +10,6 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = {"https://studyfrontend.vercel.app", "http://localhost:5173"})
 public class AuthController {
     
     @Autowired
@@ -18,24 +17,59 @@ public class AuthController {
     
     @PostMapping("/login")
     public ResponseEntity<Map<String, Object>> login(@RequestBody Map<String, String> loginData) {
-        String email = loginData.get("email");
-        String password = loginData.get("password");
-        
-        Optional<Cliente> cliente = clienteService.getUserByEmail(email);
-        if (cliente.isPresent() && cliente.get().getPassword().equals(password)) {
-            return ResponseEntity.ok(Map.of(
-                "success", true,
-                "user", Map.of(
-                    "id", cliente.get().getId(),
-                    "email", cliente.get().getEmail(),
-                    "nome", cliente.get().getFullName()
-                )
+        try {
+            String email = loginData.get("email");
+            String password = loginData.get("password");
+            
+            if (email == null || password == null || email.trim().isEmpty() || password.trim().isEmpty()) {
+                return ResponseEntity.badRequest().body(Map.of(
+                    "success", false,
+                    "message", "Email e senha são obrigatórios"
+                ));
+            }
+            
+            Optional<Cliente> cliente = clienteService.getUserByEmail(email.trim());
+            if (cliente.isPresent() && cliente.get().getPassword().equals(password)) {
+                return ResponseEntity.ok(Map.of(
+                    "success", true,
+                    "user", Map.of(
+                        "id", cliente.get().getId(),
+                        "email", cliente.get().getEmail(),
+                        "nome", cliente.get().getFullName() != null ? cliente.get().getFullName() : cliente.get().getUsername()
+                    )
+                ));
+            }
+            
+            return ResponseEntity.status(401).body(Map.of(
+                "success", false,
+                "message", "Email ou senha incorretos"
+            ));
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(Map.of(
+                "success", false,
+                "message", "Erro interno do servidor"
             ));
         }
-        
-        return ResponseEntity.badRequest().body(Map.of(
-            "success", false,
-            "message", "Email ou senha incorretos"
-        ));
+    }
+    
+    @GetMapping("/debug/users")
+    public ResponseEntity<Map<String, Object>> debugUsers() {
+        try {
+            var usuarios = clienteService.getAllClientes();
+            return ResponseEntity.ok(Map.of(
+                "success", true,
+                "count", usuarios.size(),
+                "users", usuarios.stream().map(u -> Map.of(
+                    "id", u.getId(),
+                    "email", u.getEmail(),
+                    "username", u.getUsername()
+                )).toList()
+            ));
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(Map.of(
+                "success", false,
+                "message", "Erro ao buscar usuários: " + e.getMessage()
+            ));
+        }
     }
 }
