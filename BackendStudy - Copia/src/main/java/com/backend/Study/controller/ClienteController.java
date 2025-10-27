@@ -1,7 +1,7 @@
-package com.backend.INKFLOW.controller;
+package com.backend.Study.controller;
 
-import com.backend.INKFLOW.model.Cliente;
-import com.backend.INKFLOW.service.ClienteService;
+import com.backend.Study.model.Cliente;
+import com.backend.Study.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/clientes")
-@CrossOrigin(origins = {"https://inkflowfrontend.vercel.app", "http://localhost:5173"})
+@CrossOrigin(origins = {"https://studyfrontend.vercel.app", "http://localhost:5173"})
 public class ClienteController {
     
     @Autowired
@@ -44,7 +44,6 @@ public class ClienteController {
                 .map(existingCliente -> {
                     existingCliente.setFullName(cliente.getFullName());
                     existingCliente.setTelefone(cliente.getTelefone());
-                    existingCliente.setProfileImage(cliente.getProfileImage());
                     return ResponseEntity.ok(clienteService.saveCliente(existingCliente));
                 })
                 .orElse(ResponseEntity.notFound().build());

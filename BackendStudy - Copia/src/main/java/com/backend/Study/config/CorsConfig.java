@@ -1,4 +1,4 @@
-package com.backend.INKFLOW.config;
+package com.backend.Study.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,7 +14,7 @@ public class CorsConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOriginPatterns("https://inkflowfrontend.vercel.app", "http://localhost:*", "https://*.app.github.dev")
+                .allowedOriginPatterns("https://studyfrontend.vercel.app", "http://localhost:*", "https://*.app.github.dev")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true);

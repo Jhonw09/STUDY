@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { testConnection, clienteService, agendamentoService } from '../services/inkflowApi';
+import { testConnection, clienteService, agendamentoService } from '../services/studyApi';
 
 function TestConnection() {
   const [result, setResult] = useState('');

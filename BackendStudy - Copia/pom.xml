@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.backend</groupId>
-	<artifactId>INKFLOW</artifactId>
+	<artifactId>Study</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>INKFLOW</name>
+	<name>Study</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>

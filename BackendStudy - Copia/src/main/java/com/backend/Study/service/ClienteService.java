@@ -1,7 +1,7 @@
-package com.backend.INKFLOW.service;
+package com.backend.Study.service;
 
-import com.backend.INKFLOW.model.Cliente;
-import com.backend.INKFLOW.repository.ClienteRepository;
+import com.backend.Study.model.Cliente;
+import com.backend.Study.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -19,10 +19,6 @@ public class ClienteService {
     
     public Optional<Cliente> getClienteById(Long id) {
         return clienteRepository.findById(id);
-    }
-    
-    public Optional<Cliente> getClienteByUsername(String username) {
-        return clienteRepository.findByUsername(username);
     }
     
     public Cliente saveCliente(Cliente cliente) {

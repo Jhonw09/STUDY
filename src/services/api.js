@@ -36,23 +36,29 @@ api.interceptors.response.use(
 )
 
 export const authAPI = {
-  login: (credentials) => api.post('/auth/login', credentials),
-  register: (userData) => api.post('/auth/register', userData),
-  logout: () => api.post('/auth/logout'),
-  deleteAccount: () => api.delete('/auth/account'),
+  login: (credentials) => api.post('/api/auth/login', credentials),
+  register: (userData) => api.post('/api/clientes', userData),
+  logout: () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    return Promise.resolve();
+  },
+  deleteAccount: (id) => api.delete(`/api/clientes/${id}`),
 }
 
 export const bookingAPI = {
-  create: (bookingData) => api.post('/bookings', bookingData),
-  getAll: () => api.get('/bookings'),
-  getById: (id) => api.get(`/bookings/${id}`),
-  update: (id, data) => api.put(`/bookings/${id}`, data),
-  delete: (id) => api.delete(`/bookings/${id}`),
+  create: (bookingData) => api.post('/api/agendamentos', bookingData),
+  getAll: () => api.get('/api/agendamentos'),
+  getById: (id) => api.get(`/api/agendamentos/${id}`),
+  update: (id, data) => api.put(`/api/agendamentos/${id}`, data),
+  delete: (id) => api.delete(`/api/agendamentos/${id}`),
 }
 
-export const portfolioAPI = {
-  getAll: () => api.get('/portfolio'),
-  getByCategory: (category) => api.get(`/portfolio?category=${category}`),
+export const clienteAPI = {
+  getAll: () => api.get('/api/clientes'),
+  getById: (id) => api.get(`/api/clientes/${id}`),
+  update: (id, data) => api.put(`/api/clientes/${id}`, data),
+  delete: (id) => api.delete(`/api/clientes/${id}`),
 }
 
 export default api

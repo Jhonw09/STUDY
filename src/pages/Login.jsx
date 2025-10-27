@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { clienteService } from '../services/inkflowApi'
+import { clienteService } from '../services/studyApi'
 import './Login.css'
 
 const Login = () => {

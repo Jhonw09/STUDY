@@ -1,7 +1,7 @@
-package com.backend.INKFLOW.controller;
+package com.backend.Study.controller;
 
-import com.backend.INKFLOW.model.Cliente;
-import com.backend.INKFLOW.service.ClienteService;
+import com.backend.Study.model.Cliente;
+import com.backend.Study.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/auth")
+@CrossOrigin(origins = {"https://studyfrontend.vercel.app", "http://localhost:5173"})
 public class AuthController {
     
     @Autowired
@@ -20,20 +21,6 @@ public class AuthController {
         String email = loginData.get("email");
         String password = loginData.get("password");
         
-        // Login admin
-        if ("admin@inkflow.com".equals(email) && "admin123".equals(password)) {
-            return ResponseEntity.ok(Map.of(
-                "success", true,
-                "user", Map.of(
-                    "id", 0,
-                    "email", email,
-                    "nome", "Administrador",
-                    "isAdmin", true
-                )
-            ));
-        }
-        
-        // Login cliente
         Optional<Cliente> cliente = clienteService.getUserByEmail(email);
         if (cliente.isPresent() && cliente.get().getPassword().equals(password)) {
             return ResponseEntity.ok(Map.of(
@@ -41,8 +28,7 @@ public class AuthController {
                 "user", Map.of(
                     "id", cliente.get().getId(),
                     "email", cliente.get().getEmail(),
-                    "nome", cliente.get().getFullName(),
-                    "isAdmin", false
+                    "nome", cliente.get().getFullName()
                 )
             ));
         }

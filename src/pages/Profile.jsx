@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { clienteService } from '../services/inkflowApi'
+import { clienteService } from '../services/studyApi'
 
 const Profile = () => {
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)

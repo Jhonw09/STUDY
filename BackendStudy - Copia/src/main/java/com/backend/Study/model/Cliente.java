@@ -1,4 +1,4 @@
-package com.backend.INKFLOW.model;
+package com.backend.Study.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
@@ -21,12 +21,10 @@ public class Cliente {
     
     private String fullName;
     private String telefone;
-    private String profileImage;
     
     @Column(name = "created_at")
     private LocalDateTime createdAt = LocalDateTime.now();
     
-    // Constructors
     public Cliente() {}
     
     public Cliente(String username, String email, String password) {
@@ -35,7 +33,6 @@ public class Cliente {
         this.password = password;
     }
     
-    // Getters and Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
     
@@ -53,9 +50,6 @@ public class Cliente {
     
     public String getTelefone() { return telefone; }
     public void setTelefone(String telefone) { this.telefone = telefone; }
-    
-    public String getProfileImage() { return profileImage; }
-    public void setProfileImage(String profileImage) { this.profileImage = profileImage; }
     
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
