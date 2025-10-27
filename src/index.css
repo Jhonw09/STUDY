@@ -14,6 +14,19 @@ body {
   background: #0a0a0f;
   color: #fff;
   overflow-x: hidden;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 300px;
+  background: radial-gradient(ellipse at top, rgba(99, 102, 241, 0.15), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 code {
@@ -31,15 +44,19 @@ code {
 
 ::-webkit-scrollbar-track {
   background: #0a0a0f;
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
-  border-radius: 5px;
+  background: linear-gradient(180deg, #6366f1, #8b5cf6);
+  border-radius: 10px;
+  border: 2px solid #0a0a0f;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #8b5cf6, #ec4899);
+  background: linear-gradient(180deg, #7c3aed, #a78bfa);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5), 0 0 8px rgba(99, 102, 241, 0.5);
 }
 
 /* Animações globais */
@@ -67,13 +84,15 @@ code {
 
 /* Seleção de texto */
 ::selection {
-  background: rgba(99, 102, 241, 0.3);
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.4), rgba(139, 92, 246, 0.3));
   color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 ::-moz-selection {
-  background: rgba(99, 102, 241, 0.3);
+  background: rgba(99, 102, 241, 0.4);
   color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 /* Utilitários */
@@ -81,6 +100,18 @@ code {
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 2rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1.2rem;
+  }
 }
 
 /* Transições suaves */
@@ -93,5 +124,41 @@ button:focus-visible,
 a:focus-visible,
 input:focus-visible {
   outline: 2px solid #6366f1;
-  outline-offset: 2px;
+  outline-offset: 3px;
+  border-radius: 8px;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+}
+
+/* Animação de entrada suave */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Efeito de brilho sutil */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Prevenir zoom em inputs no mobile */
+@media (max-width: 768px) {
+  input, select, textarea {
+    font-size: 16px !important;
+  }
 }

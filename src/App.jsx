@@ -13,6 +13,7 @@ import Contact from './pages/Contact'
 import Login from './pages/Login'
 import Profile from './pages/Profile'
 import TestConnection from './components/TestConnection'
+import './styles/premium-effects.css'
 
 function ScrollToTop() {
   const { pathname } = useLocation()

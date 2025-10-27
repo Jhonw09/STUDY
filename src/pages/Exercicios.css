@@ -1,28 +1,39 @@
 .exercicios-page {
   min-height: 100vh;
   background: #0a0a0f;
-  padding-top: 80px;
+  padding-top: 70px;
 }
 
 .exercicios-hero {
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-  padding: 4rem 2rem;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.05) 100%);
+  padding: 5rem 2rem 4rem;
   text-align: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+}
+
+.exercicios-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.5), transparent);
 }
 
 .subjects-tabs {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  padding: 3rem 0;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+  padding: 3rem 0 2.5rem;
 }
 
 .subject-tab {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  padding: 2rem;
+  border-radius: 14px;
+  padding: 1.8rem;
   cursor: pointer;
   transition: all 0.3s ease;
   text-align: left;
@@ -32,33 +43,39 @@
 }
 
 .subject-tab:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.06);
   border-color: var(--subject-color);
   transform: translateY(-5px);
 }
 
 .subject-tab.active {
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.1));
   border-color: var(--subject-color);
-  box-shadow: 0 10px 40px rgba(99, 102, 241, 0.2);
+  box-shadow: 0 10px 40px rgba(99, 102, 241, 0.25);
 }
 
 .tab-icon {
-  font-size: 2.5rem;
+  font-size: 2.3rem;
   display: block;
   margin-bottom: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.subject-tab:hover .tab-icon {
+  transform: scale(1.1);
 }
 
 .tab-name {
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: #fff;
   display: block;
+  letter-spacing: -0.01em;
 }
 
 .tab-count {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.55);
   display: block;
 }
 
@@ -69,16 +86,16 @@
 }
 
 .question-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  padding: 2.5rem;
-  margin-bottom: 2rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
   transition: all 0.3s ease;
 }
 
 .question-card:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.06);
   border-color: rgba(99, 102, 241, 0.3);
 }
 
@@ -125,8 +142,8 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 1.2rem 1.5rem;
-  background: rgba(255, 255, 255, 0.03);
+  padding: 1.1rem 1.3rem;
+  background: rgba(255, 255, 255, 0.04);
   border: 2px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   cursor: pointer;
@@ -136,15 +153,15 @@
 }
 
 .option-btn:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(99, 102, 241, 0.5);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(99, 102, 241, 0.4);
   transform: translateX(5px);
 }
 
 .option-btn.selected {
-  background: rgba(99, 102, 241, 0.2);
+  background: rgba(99, 102, 241, 0.15);
   border-color: #6366f1;
-  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 6px 25px rgba(99, 102, 241, 0.3);
 }
 
 .option-letter {
@@ -177,13 +194,13 @@
 }
 
 .btn-submit {
-  padding: 1.2rem 3rem;
+  padding: 1.1rem 3rem;
   background: linear-gradient(135deg, #6366f1, #8b5cf6);
   color: #fff;
   border: none;
-  border-radius: 50px;
+  border-radius: 12px;
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -191,6 +208,7 @@
 .btn-submit:hover:not(:disabled) {
   transform: translateY(-3px);
   box-shadow: 0 10px 40px rgba(99, 102, 241, 0.5);
+  background: linear-gradient(135deg, #7c3aed, #a78bfa);
 }
 
 .btn-submit:disabled {
@@ -354,13 +372,13 @@
 .btn-retry {
   display: block;
   margin: 0 auto;
-  padding: 1.2rem 3rem;
+  padding: 1.1rem 3rem;
   background: linear-gradient(135deg, #6366f1, #8b5cf6);
   color: #fff;
   border: none;
-  border-radius: 50px;
+  border-radius: 12px;
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -368,29 +386,161 @@
 .btn-retry:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 40px rgba(99, 102, 241, 0.5);
+  background: linear-gradient(135deg, #7c3aed, #a78bfa);
+}
+
+@media (max-width: 1024px) {
+  .subjects-tabs {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
 }
 
 @media (max-width: 768px) {
   .exercicios-hero {
-    padding: 3rem 1.5rem;
+    padding: 4rem 1.5rem 3rem;
   }
 
   .subjects-tabs {
-    grid-template-columns: 1fr;
-    padding: 2rem 0;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 2rem 0 1.5rem;
+    gap: 1rem;
+  }
+
+  .subject-tab {
+    padding: 1.5rem;
+  }
+
+  .tab-icon {
+    font-size: 2rem;
+  }
+
+  .tab-name {
+    font-size: 1.15rem;
   }
 
   .question-card {
     padding: 1.5rem;
   }
 
+  .question-text {
+    font-size: 1.2rem;
+  }
+
+  .option-btn {
+    padding: 1rem 1.2rem;
+  }
+
   .results-header {
     flex-direction: column;
     text-align: center;
     gap: 2rem;
+    padding: 2rem;
+  }
+
+  .score-circle {
+    width: 130px;
+    height: 130px;
+  }
+
+  .score-number {
+    font-size: 2.5rem;
   }
 
   .score-details h2 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+  }
+
+  .score-details p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .exercicios-hero {
+    padding: 3rem 1.2rem 2.5rem;
+  }
+
+  .subjects-tabs {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+
+  .subject-tab {
+    padding: 1.3rem;
+  }
+
+  .tab-icon {
+    font-size: 1.8rem;
+  }
+
+  .tab-name {
+    font-size: 1.1rem;
+  }
+
+  .tab-count {
+    font-size: 0.85rem;
+  }
+
+  .question-card {
+    padding: 1.3rem;
+  }
+
+  .question-text {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .option-btn {
+    padding: 0.95rem 1rem;
+    gap: 0.8rem;
+  }
+
+  .option-letter {
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
+  }
+
+  .option-text {
+    font-size: 0.95rem;
+  }
+
+  .btn-submit, .btn-retry {
+    width: 100%;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+
+  .results-header {
+    padding: 1.5rem;
+  }
+
+  .score-circle {
+    width: 110px;
+    height: 110px;
+  }
+
+  .score-number {
+    font-size: 2rem;
+  }
+
+  .score-label {
+    font-size: 0.85rem;
+  }
+
+  .score-details h2 {
+    font-size: 1.4rem;
+  }
+
+  .score-details p {
+    font-size: 0.95rem;
+  }
+
+  .review-card {
+    padding: 1.5rem;
+  }
+
+  .review-question {
+    font-size: 1.1rem;
   }
 }
