@@ -1,239 +1,137 @@
+import './About.css'
+
 const About = () => {
+  const team = [
+    {
+      name: 'Dr. Carlos Silva',
+      role: 'Diretor Acadêmico',
+      image: '👨‍🏫',
+      bio: '15 anos de experiência em educação'
+    },
+    {
+      name: 'Dra. Ana Santos',
+      role: 'Coordenadora de Conteúdo',
+      image: '👩‍💼',
+      bio: 'Especialista em metodologias ativas'
+    },
+    {
+      name: 'Prof. João Costa',
+      role: 'Desenvolvedor de Cursos',
+      image: '👨‍💻',
+      bio: 'Criador de +100 cursos online'
+    },
+    {
+      name: 'Profa. Maria Oliveira',
+      role: 'Designer Instrucional',
+      image: '👩‍🎨',
+      bio: 'Especialista em experiência do aluno'
+    }
+  ]
+
+  const values = [
+    {
+      icon: '🎯',
+      title: 'Missão',
+      description: 'Democratizar o acesso à educação de qualidade, oferecendo conteúdo gratuito e acessível para todos os estudantes brasileiros.'
+    },
+    {
+      icon: '👁️',
+      title: 'Visão',
+      description: 'Ser a principal plataforma de educação gratuita do Brasil, transformando vidas através do conhecimento.'
+    },
+    {
+      icon: '💎',
+      title: 'Valores',
+      description: 'Excelência, acessibilidade, inovação e compromisso com o desenvolvimento educacional de cada estudante.'
+    }
+  ]
+
+  const achievements = [
+    { number: '50k+', label: 'Estudantes Ativos' },
+    { number: '500+', label: 'Cursos Disponíveis' },
+    { number: '2.5k+', label: 'Materiais de Estudo' },
+    { number: '95%', label: 'Taxa de Satisfação' }
+  ]
+
   return (
-    <div style={{
-      background: '#000',
-      minHeight: '100vh',
-      paddingTop: '8rem',
-      position: 'relative',
-      overflow: 'hidden'
-    }}>
-      <div style={{
-        position: 'absolute',
-        left: '-20%',
-        top: '5%',
-        width: '60%',
-        height: '95%',
-        background: 'linear-gradient(135deg, var(--accent-red), #cc1f1f)',
-        clipPath: 'polygon(30% 0, 100% 0, 70% 100%, 0% 100%)',
-        zIndex: 0,
-        opacity: 0.8
-      }} />
-      <div style={{
-        maxWidth: '1200px',
-        margin: '0 auto',
-        padding: '4rem 2rem',
-        display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
-        gap: '4rem',
-        alignItems: 'center',
-        position: 'relative',
-        zIndex: 2
-      }}>
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}>
-          <img 
-            src="/assets/images/Retrato INK.png" 
-            alt="Retrato INK" 
-            style={{
-              width: '100%',
-              maxWidth: '400px',
-              height: 'auto',
-              borderRadius: '12px',
-              boxShadow: '0 10px 30px rgba(0,0,0,0.5)'
-            }} 
-          />
-        </div>
-        
-        <div style={{
-          color: 'white'
-        }}>
-          <p style={{
-            color: 'var(--accent-red)',
-            fontSize: '1.1rem',
-            fontWeight: '600',
-            marginBottom: '1rem',
-            letterSpacing: '2px'
-          }}>BEM VINDO AO INK FLOW</p>
-          
-          <h2 style={{
-            fontFamily: 'Bebas Neue, cursive',
-            fontSize: '3.5rem',
-            color: 'white',
-            marginBottom: '2rem',
-            lineHeight: '1.1'
-          }}>NÓS SOMOS O MELHOR ESTÚDIO DE TATUAGEM</h2>
-          
-          <p style={{
-            color: '#ccc',
-            fontSize: '1.1rem',
-            lineHeight: '1.7',
-            marginBottom: '2rem'
-          }}>
-            Nossa missão é transformar sua pele em uma obra de arte única. Com mais de 10 anos de experiência, 
-            combinamos técnicas tradicionais com inovação artística para criar tatuagens que contam sua história.
+    <div className="about-page">
+      <div className="about-hero">
+        <div className="container">
+          <h1 className="page-title">Sobre o StudyConnect</h1>
+          <p className="page-subtitle">
+            Transformando vidas através da educação gratuita e de qualidade
           </p>
-          
-          <div style={{
-            marginBottom: '2rem'
-          }}>
-            <div style={{
-              fontFamily: 'cursive',
-              fontSize: '1.5rem',
-              color: 'var(--accent-red)',
-              marginBottom: '0.5rem'
-            }}>Lilly Kuiavski</div>
-            <p style={{
-              color: '#999',
-              fontSize: '0.9rem'
-            }}>Fundador & Artista Principal</p>
-          </div>
-          
-          <a href="https://wa.me/5511999999999" style={{
-            background: '#25d366',
-            color: 'white',
-            padding: '1rem 2rem',
-            borderRadius: '8px',
-            textDecoration: 'none',
-            fontWeight: '600',
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '0.5rem',
-            transition: 'all 0.3s ease',
-            boxShadow: '0 4px 15px rgba(37, 211, 102, 0.3)'
-          }} onMouseEnter={(e) => {
-            e.target.style.transform = 'translateY(-2px)'
-            e.target.style.boxShadow = '0 6px 20px rgba(37, 211, 102, 0.4)'
-          }} onMouseLeave={(e) => {
-            e.target.style.transform = 'translateY(0)'
-            e.target.style.boxShadow = '0 4px 15px rgba(37, 211, 102, 0.3)'
-          }}>
-            <span>📱</span>
-            ORÇAMENTO WHATSAPP
-          </a>
         </div>
       </div>
-      
-      <section style={{
-        background: `
-          radial-gradient(circle at 20% 30%, rgba(255,255,255,0.02) 1px, transparent 1px),
-          radial-gradient(circle at 80% 70%, rgba(255,255,255,0.02) 1px, transparent 1px),
-          linear-gradient(135deg, rgba(255,255,255,0.01) 25%, transparent 25%),
-          linear-gradient(45deg, rgba(255,255,255,0.01) 25%, transparent 25%),
-          linear-gradient(145deg, #1a1a1a, #0f0f0f)
-        `,
-        backgroundSize: '60px 60px, 80px 80px, 40px 40px, 40px 40px, 100% 100%',
-        margin: '6rem 2rem 4rem 2rem',
-        padding: '3rem 2rem',
-        borderRadius: '16px',
-        maxWidth: '1200px',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        border: '1px solid rgba(255,255,255,0.1)',
-        position: 'relative',
-        zIndex: 2
-      }}>
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-          gap: '2rem',
-          textAlign: 'center'
-        }}>
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center'
-          }}>
-            <img src="/assets/icons/clients.svg" alt="Clientes" style={{
-              width: '48px',
-              height: '48px',
-              marginBottom: '0.5rem'
-            }} />
-            <div style={{
-              fontSize: '2.5rem',
-              fontWeight: 'bold',
-              color: 'white',
-              marginBottom: '0.5rem'
-            }}>1.500<span style={{ color: 'var(--accent-red)' }}>+</span></div>
-            <p style={{
-              color: '#ccc',
-              fontSize: '0.9rem',
-              margin: 0
-            }}>Clientes Satisfeitos</p>
+
+      <div className="container">
+        <section className="story-section">
+          <div className="story-content">
+            <h2 className="section-title">Nossa História</h2>
+            <div className="story-text">
+              <p>
+                O StudyConnect nasceu em 2020 com uma missão clara: democratizar o acesso à educação de qualidade no Brasil. Fundada por educadores apaixonados, nossa plataforma surgiu da necessidade de oferecer conteúdo educacional gratuito e de alto nível para todos os estudantes.
+              </p>
+              <p>
+                Começamos com apenas 10 cursos e hoje oferecemos mais de 500 cursos completos, 2.500+ materiais de estudo e uma comunidade vibrante de mais de 50 mil estudantes ativos. Nossa jornada é guiada pela crença de que a educação é um direito fundamental e deve estar acessível a todos.
+              </p>
+              <p>
+                Trabalhamos com professores qualificados, especialistas em suas áreas e designers instrucionais para criar experiências de aprendizado envolventes e eficazes. Cada curso é cuidadosamente desenvolvido para garantir que você tenha a melhor experiência educacional possível.
+              </p>
+            </div>
           </div>
-          
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center'
-          }}>
-            <img src="/assets/icons/arts.svg" alt="Artes" style={{
-              width: '48px',
-              height: '48px',
-              marginBottom: '0.5rem'
-            }} />
-            <div style={{
-              fontSize: '2.5rem',
-              fontWeight: 'bold',
-              color: 'white',
-              marginBottom: '0.5rem'
-            }}>1.200<span style={{ color: 'var(--accent-red)' }}>+</span></div>
-            <p style={{
-              color: '#ccc',
-              fontSize: '0.9rem',
-              margin: 0
-            }}>Artes Criadas</p>
+        </section>
+
+        <section className="values-section">
+          <h2 className="section-title">Nossos Pilares</h2>
+          <div className="values-grid">
+            {values.map((value, index) => (
+              <div key={index} className="value-card">
+                <div className="value-icon">{value.icon}</div>
+                <h3 className="value-title">{value.title}</h3>
+                <p className="value-description">{value.description}</p>
+              </div>
+            ))}
           </div>
-          
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center'
-          }}>
-            <img src="/assets/icons/years.svg" alt="Experiência" style={{
-              width: '48px',
-              height: '48px',
-              marginBottom: '0.5rem'
-            }} />
-            <div style={{
-              fontSize: '2.5rem',
-              fontWeight: 'bold',
-              color: 'white',
-              marginBottom: '0.5rem'
-            }}>10<span style={{ color: 'var(--accent-red)' }}>+</span></div>
-            <p style={{
-              color: '#ccc',
-              fontSize: '0.9rem',
-              margin: 0
-            }}>Anos de Experiência</p>
+        </section>
+
+        <section className="achievements-section">
+          <h2 className="section-title">Nossos Números</h2>
+          <div className="achievements-grid">
+            {achievements.map((achievement, index) => (
+              <div key={index} className="achievement-card">
+                <div className="achievement-number">{achievement.number}</div>
+                <div className="achievement-label">{achievement.label}</div>
+              </div>
+            ))}
           </div>
-          
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center'
-          }}>
-            <img src="/assets/icons/team.svg" alt="Time" style={{
-              width: '48px',
-              height: '48px',
-              marginBottom: '0.5rem'
-            }} />
-            <div style={{
-              fontSize: '2.5rem',
-              fontWeight: 'bold',
-              color: 'white',
-              marginBottom: '0.5rem'
-            }}>100<span style={{ color: 'var(--accent-red)' }}>%</span></div>
-            <p style={{
-              color: '#ccc',
-              fontSize: '0.9rem',
-              margin: 0
-            }}>Time Profissional</p>
+        </section>
+
+        <section className="team-section">
+          <h2 className="section-title">Nossa Equipe</h2>
+          <p className="section-subtitle">
+            Conheça os profissionais dedicados que tornam tudo isso possível
+          </p>
+          <div className="team-grid">
+            {team.map((member, index) => (
+              <div key={index} className="team-card">
+                <div className="member-avatar">{member.image}</div>
+                <h3 className="member-name">{member.name}</h3>
+                <p className="member-role">{member.role}</p>
+                <p className="member-bio">{member.bio}</p>
+              </div>
+            ))}
           </div>
-        </div>
-      </section>
+        </section>
+
+        <section className="cta-about">
+          <div className="cta-content">
+            <h2>Faça Parte da Nossa Comunidade</h2>
+            <p>Junte-se a milhares de estudantes que já estão transformando suas vidas</p>
+            <button className="btn-join">Começar Agora →</button>
+          </div>
+        </section>
+      </div>
     </div>
   )
 }

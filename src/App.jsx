@@ -5,12 +5,12 @@ import Footer from './components/Footer'
 import Chatbot from './components/Chatbot'
 import Home from './pages/Home'
 import About from './pages/About'
-import Portfolio from './pages/Portfolio'
-import Services from './pages/Services'
+import Cursos from './pages/Cursos'
+import CursoDetalhes from './pages/CursoDetalhes'
+import Biblioteca from './pages/Biblioteca'
+import Exercicios from './pages/Exercicios'
 import Contact from './pages/Contact'
 import Login from './pages/Login'
-import Booking from './pages/Booking'
-import AdminDashboard from './pages/AdminDashboard'
 import Profile from './pages/Profile'
 import TestConnection from './components/TestConnection'
 
@@ -36,14 +36,13 @@ function AppContent() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/sobre" element={<About />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/servicos" element={<Services />} />
+          <Route path="/cursos" element={<Cursos />} />
+          <Route path="/curso/:id" element={<CursoDetalhes />} />
+          <Route path="/biblioteca" element={<Biblioteca />} />
+          <Route path="/exercicios" element={<Exercicios />} />
           <Route path="/contato" element={<Contact />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/agendamento" element={<Booking />} />
-          <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/perfil" element={<Profile />} />
-          <Route path="/test" element={<TestConnection />} />
         </Routes>
       </main>
       {!isLoginPage && <Footer />}

@@ -1,88 +1,54 @@
 import { useState, useEffect } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import './Header.css'
 
 const Header = () => {
+  const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-
   const [user, setUser] = useState(null)
   const location = useLocation()
-  const navigate = useNavigate()
 
   useEffect(() => {
     const userData = localStorage.getItem('user')
-    if (userData) {
-      setUser(JSON.parse(userData))
-    }
+    if (userData) setUser(JSON.parse(userData))
   }, [location])
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 20)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
-
-
-  const isActive = (path) => {
-    return location.pathname === path ? 'active' : ''
-  }
-
-  const handleSobreNosClick = (e) => {
-    e.preventDefault()
-    if (location.pathname === '/') {
-      document.getElementById('sobre-nos')?.scrollIntoView({ behavior: 'smooth' })
-    } else {
-      navigate('/')
-      setTimeout(() => {
-        document.getElementById('sobre-nos')?.scrollIntoView({ behavior: 'smooth' })
-      }, 100)
-    }
-  }
-
-  const handleServicosClick = (e) => {
-    e.preventDefault()
-    if (location.pathname === '/') {
-      document.getElementById('servicos')?.scrollIntoView({ behavior: 'smooth' })
-    } else {
-      navigate('/')
-      setTimeout(() => {
-        document.getElementById('servicos')?.scrollIntoView({ behavior: 'smooth' })
-      }, 100)
-    }
-  }
+  const isActive = (path) => location.pathname === path
 
   return (
-    <header>
-      <nav>
-        <Link to="/" className="logo">INK FLOW</Link>
-        <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-          <li><Link to="/" className={isActive('/')}>Home</Link></li>
-          <li><a href="#sobre-nos" onClick={handleSobreNosClick} className={isActive('/sobre')}>Sobre Nós</a></li>
-          <li><Link to="/portfolio" className={isActive('/portfolio')}>Portfólio</Link></li>
-          <li><a href="#servicos" onClick={handleServicosClick} className={isActive('/servicos')}>Serviços</a></li>
-          <li><Link to="/agendamento" className={isActive('/agendamento')}>Agendamento</Link></li>
-          <li><Link to="/contato" className={isActive('/contato')}>Contato</Link></li>
-          {user ? (
-            <li>
-              <Link to="/perfil" className="user-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                  <circle cx="12" cy="8" r="4"/>
-                  <path d="M12 14c-6 0-8 4-8 4v2h16v-2s-2-4-8-4z"/>
-                </svg>
-              </Link>
-            </li>
-          ) : (
-            <li><Link to="/login" className={isActive('/login')}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <circle cx="12" cy="8" r="4"/>
-                <path d="M12 14c-6 0-8 4-8 4v2h16v-2s-2-4-8-4z"/>
-              </svg>
-              <span style={{marginLeft: '0.5rem'}}>Login</span>
-            </Link></li>
-          )}
+    <header className={`modern-header ${isScrolled ? 'scrolled' : ''}`}>
+      <nav className="nav-container">
+        <Link to="/" className="brand">
+          <span className="brand-icon">📚</span>
+          <span className="brand-text">StudyConnect</span>
+        </Link>
+
+        <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
+          <li><Link to="/" className={isActive('/') ? 'active' : ''}>Início</Link></li>
+          <li><Link to="/cursos" className={isActive('/cursos') ? 'active' : ''}>Cursos</Link></li>
+          <li><Link to="/biblioteca" className={isActive('/biblioteca') ? 'active' : ''}>Biblioteca</Link></li>
+          <li><Link to="/exercicios" className={isActive('/exercicios') ? 'active' : ''}>Exercícios</Link></li>
+          <li><Link to="/sobre" className={isActive('/sobre') ? 'active' : ''}>Sobre</Link></li>
         </ul>
+
         <div className="nav-actions">
-          <button className="mobile-menu-toggle" onClick={toggleMenu}>
-            ☰
+          {user ? (
+            <Link to="/perfil" className="user-profile">
+              <div className="avatar">{user.name?.[0] || 'U'}</div>
+            </Link>
+          ) : (
+            <Link to="/login" className="btn-login">Entrar</Link>
+          )}
+          <button className="menu-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            <span></span>
+            <span></span>
+            <span></span>
           </button>
         </div>
       </nav>
