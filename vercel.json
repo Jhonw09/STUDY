@@ -1,8 +1,11 @@
 {
+  "installCommand": "npm install && chmod -R +x node_modules",
+  "buildCommand": "node node_modules/vite/bin/vite.js build",
+  "outputDirectory": "dist",
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": ""
+      "destination": "https://inkflowbackend-4w1g.onrender.com/api/$1"
     },
     {
       "source": "/(.*)",
