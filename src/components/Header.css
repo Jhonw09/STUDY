@@ -389,3 +389,29 @@
     font-size: 0.8rem;
   }
 }
+
+@media (max-width: 360px) {
+  .nav-container {
+    padding: 0.7rem 0.8rem;
+    gap: 1rem;
+  }
+
+  .brand {
+    font-size: 1rem;
+  }
+
+  .brand-text {
+    display: none;
+  }
+
+  .btn-login {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+  }
+
+  .avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 0.8rem;
+  }
+}

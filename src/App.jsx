@@ -15,6 +15,7 @@ import Login from './pages/Login'
 import Profile from './pages/Profile'
 import TestConnection from './components/TestConnection'
 import './styles/premium-effects.css'
+import './styles/responsive-improvements.css'
 
 function ScrollToTop() {
   const { pathname } = useLocation()

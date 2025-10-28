@@ -1,0 +1,227 @@
+/* ===== MELHORIAS DE RESPONSIVIDADE GLOBAL ===== */
+
+/* Otimizações para telas muito pequenas */
+@media (max-width: 360px) {
+  /* Reduz o tamanho base da fonte para economizar espaço */
+  html {
+    font-size: 14px;
+  }
+  
+  /* Remove tap highlight em dispositivos móveis */
+  * {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+  }
+  
+  /* Melhora a área de toque para botões pequenos */
+  button, a, input[type="button"], input[type="submit"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Otimiza o espaçamento vertical */
+  .section-spacing {
+    padding: 2rem 0 !important;
+  }
+  
+  /* Melhora a legibilidade em telas pequenas */
+  p, span, div {
+    line-height: 1.5;
+  }
+  
+  /* Otimiza grids para uma coluna */
+  .auto-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+}
+
+/* Otimizações para landscape em mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  /* Reduz padding vertical em seções hero */
+  .hero-section, .cursos-hero, .biblioteca-hero {
+    padding-top: 2rem !important;
+    padding-bottom: 1.5rem !important;
+    min-height: auto !important;
+  }
+  
+  /* Compacta o header */
+  .modern-header {
+    padding: 0.5rem 0 !important;
+  }
+  
+  .nav-container {
+    padding: 0.5rem 2rem !important;
+  }
+  
+  /* Reduz espaçamento em cards */
+  .feature-card, .course-card, .material-card {
+    padding: 1rem !important;
+  }
+}
+
+/* Melhorias para tablets */
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* Otimiza grids para tablets */
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .subjects-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .courses-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .materials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Melhorias para telas grandes */
+@media (min-width: 1400px) {
+  /* Aumenta o container máximo */
+  .container {
+    max-width: 1600px;
+  }
+  
+  /* Otimiza grids para telas grandes */
+  .features-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .subjects-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  
+  .courses-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .materials-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Melhorias de acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+  /* Remove animações para usuários que preferem movimento reduzido */
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Melhorias para modo escuro do sistema */
+@media (prefers-color-scheme: dark) {
+  /* Já está otimizado para modo escuro, mas podemos ajustar contrastes */
+  .feature-card, .course-card, .material-card {
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+}
+
+/* Otimizações para impressão */
+@media print {
+  /* Remove elementos desnecessários na impressão */
+  .modern-header, .modern-footer, .chatbot, .btn-primary, .btn-secondary {
+    display: none !important;
+  }
+  
+  /* Otimiza cores para impressão */
+  * {
+    background: white !important;
+    color: black !important;
+  }
+  
+  /* Remove sombras e efeitos */
+  .feature-card, .course-card, .material-card {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+  }
+}
+
+/* Melhorias para telas de alta densidade (Retina) */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Melhora a renderização de ícones e imagens */
+  .brand-icon, .feature-icon, .subject-icon {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Utilitários responsivos */
+.hide-mobile {
+  display: block;
+}
+
+.show-mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .hide-mobile {
+    display: none !important;
+  }
+  
+  .show-mobile {
+    display: block !important;
+  }
+}
+
+/* Classes utilitárias para espaçamento responsivo */
+.responsive-padding {
+  padding: 2rem;
+}
+
+@media (max-width: 768px) {
+  .responsive-padding {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .responsive-padding {
+    padding: 1.2rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .responsive-padding {
+    padding: 1rem;
+  }
+}
+
+/* Melhorias para formulários em mobile */
+@media (max-width: 768px) {
+  /* Evita zoom em inputs */
+  input, select, textarea {
+    font-size: 16px !important;
+    transform: scale(1);
+  }
+  
+  /* Melhora a usabilidade de formulários */
+  .form-group {
+    margin-bottom: 1.2rem;
+  }
+  
+  .form-group input, .form-group select, .form-group textarea {
+    padding: 0.9rem 1rem;
+    border-radius: 8px;
+  }
+}
+
+/* Otimizações para performance em mobile */
+@media (max-width: 768px) {
+  /* Reduz blur effects que podem impactar performance */
+  .backdrop-blur {
+    backdrop-filter: blur(8px) !important;
+  }
+  
+  /* Simplifica gradientes complexos */
+  .complex-gradient {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+  }
+}

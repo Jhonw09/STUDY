@@ -102,15 +102,33 @@ code {
   padding: 0 2rem;
 }
 
+@media (max-width: 1200px) {
+  .container {
+    padding: 0 1.8rem;
+  }
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 0 1.5rem;
   }
 }
 
+@media (max-width: 640px) {
+  .container {
+    padding: 0 1.3rem;
+  }
+}
+
 @media (max-width: 480px) {
   .container {
     padding: 0 1.2rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .container {
+    padding: 0 1rem;
   }
 }
 
@@ -160,5 +178,24 @@ html {
 @media (max-width: 768px) {
   input, select, textarea {
     font-size: 16px !important;
+  }
+}
+
+/* Melhorias para telas muito pequenas */
+@media (max-width: 360px) {
+  body {
+    font-size: 14px;
+  }
+  
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Otimização para landscape em mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero-section {
+    min-height: auto !important;
+    padding: 3rem 2rem 2rem !important;
   }
 }

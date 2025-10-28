@@ -360,3 +360,63 @@
     padding: 0.85rem 1.5rem;
   }
 }
+
+@media (max-width: 360px) {
+  .biblioteca-hero {
+    padding: 2.5rem 1rem 2rem;
+  }
+
+  .stats-row {
+    gap: 0.6rem;
+    flex-direction: column;
+  }
+
+  .stat-box {
+    padding: 0.9rem 1.2rem;
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .stat-icon {
+    font-size: 1.6rem;
+  }
+
+  .stat-number {
+    font-size: 1.4rem;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+  }
+
+  .filter-buttons {
+    gap: 0.5rem;
+  }
+
+  .filter-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .materials-grid {
+    gap: 1rem;
+  }
+
+  .material-card {
+    padding: 1.3rem;
+  }
+
+  .material-title {
+    font-size: 1.25rem;
+  }
+
+  .material-description {
+    font-size: 0.9rem;
+  }
+
+  .btn-download {
+    padding: 0.8rem 1.3rem;
+    font-size: 0.88rem;
+  }
+}
