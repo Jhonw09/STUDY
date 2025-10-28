@@ -40,7 +40,23 @@ const Header = () => {
         <div className="nav-actions">
           {user ? (
             <Link to="/perfil" className="user-profile">
-              <div className="avatar">{user.name?.[0] || 'U'}</div>
+              <div className="avatar">
+                {user.avatar ? (
+                  <img 
+                    src={user.avatar} 
+                    alt="Avatar" 
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      objectPosition: 'center',
+                      borderRadius: '50%'
+                    }}
+                  />
+                ) : (
+                  user.nome?.[0] || 'U'
+                )}
+              </div>
             </Link>
           ) : (
             <Link to="/login" className="btn-login">Entrar</Link>

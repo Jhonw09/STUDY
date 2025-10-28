@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { clienteService } from '../services/studyApi'
+import { showAlert } from '../components/CustomAlert'
 import './Login.css'
 
 const Login = () => {
@@ -22,8 +23,8 @@ const Login = () => {
         nome: 'Administrador',
         isAdmin: true 
       }))
-      alert('Login de administrador realizado!')
-      navigate('/admin')
+      showAlert('Login de administrador realizado!', 'success')
+      navigate('/')
       return
     }
     
@@ -34,8 +35,8 @@ const Login = () => {
         nome: 'Usuário Teste',
         isAdmin: false 
       }))
-      alert('Login de teste realizado!')
-      navigate('/agendamento')
+      showAlert('Login de teste realizado!', 'success')
+      navigate('/')
       return
     }
     
@@ -53,14 +54,14 @@ const Login = () => {
             nome: cliente.fullName || cliente.username,
             isAdmin: false
           }))
-          alert('Login realizado com sucesso!')
-          navigate('/agendamento')
+          showAlert('Login realizado com sucesso!', 'success')
+          navigate('/')
         } else {
-          alert('Email ou senha incorretos!')
+          showAlert('Email ou senha incorretos!', 'error')
         }
       } else {
         if (!formData.nome || !formData.email || !formData.senha) {
-          alert('Por favor, preencha todos os campos obrigatórios.')
+          showAlert('Por favor, preencha todos os campos obrigatórios.', 'warning')
           return
         }
         
@@ -73,17 +74,17 @@ const Login = () => {
         }
         
         await clienteService.create(novoCliente)
-        alert('Cadastro realizado com sucesso! Faça login para continuar.')
+        showAlert('Cadastro realizado com sucesso! Faça login para continuar.', 'success')
         setIsLogin(true)
         setFormData({ email: '', senha: '', nome: '', telefone: '' })
       }
     } catch (error) {
       if (isLogin) {
-        alert('Erro ao fazer login. Verifique suas credenciais.')
+        showAlert('Erro ao fazer login. Verifique suas credenciais.', 'error')
       } else {
-        alert(error.response?.status === 400 || error.response?.status === 409 
+        showAlert(error.response?.status === 400 || error.response?.status === 409 
           ? 'Email já cadastrado!' 
-          : 'Erro ao processar solicitação. Tente novamente.')
+          : 'Erro ao processar solicitação. Tente novamente.', 'error')
       }
     }
   }

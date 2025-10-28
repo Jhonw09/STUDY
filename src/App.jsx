@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Chatbot from './components/Chatbot'
+import CustomAlert from './components/CustomAlert'
 import Home from './pages/Home'
 import About from './pages/About'
 import Cursos from './pages/Cursos'
@@ -48,6 +49,7 @@ function AppContent() {
       </main>
       {!isLoginPage && <Footer />}
       {!isLoginPage && <Chatbot />}
+      <CustomAlert />
     </div>
   )
 }
